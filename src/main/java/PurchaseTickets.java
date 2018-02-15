@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class PurchaseTickets
 {
 
-    Scanner scan = new Scanner(System.in);
 
     public void addTicket()
     {
@@ -26,7 +25,7 @@ public class PurchaseTickets
             System.out.println("Enter 3 for a Student ticket - £6");
             System.out.println("Enter 4 for a Child ticket - £4");
         }
-        int ticketType = scan.nextInt();
+        int ticketType = Main.scan.nextInt();
 
         if(ticketType > 1 && ticketType > 4)
         {
@@ -35,7 +34,7 @@ public class PurchaseTickets
         else
         {
             System.out.println("How many of these tickets would you like?");
-            int ticketAmount = scan.nextInt();
+            int ticketAmount = Main.scan.nextInt();
 
             Ticket ticket = new Ticket(ticketType, ticketAmount);
             Order o = Order.getInstance();
