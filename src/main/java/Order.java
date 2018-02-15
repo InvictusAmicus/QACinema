@@ -74,4 +74,10 @@ public class Order
         return price;
     }
 
+    public void clearCart()
+    {
+        cart.clear();
+    }
+
+
 }

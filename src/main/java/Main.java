@@ -15,19 +15,26 @@ public class Main
             UserInterface ui = new UserInterface();
             ui.createScreen();
         }
-        else {
+        else
+            {
             PurchaseTickets pt = new PurchaseTickets();
             pt.addTicket();
 
             boolean finishedBuying = false;
-            while (!finishedBuying) {
+            while (!finishedBuying)
+            {
                 System.out.println("Would you like to buy any more tickets?\n Enter either Y or N to respond.");
                 String response = scan.nextLine();
-                if (response.equalsIgnoreCase("Y")) {
+                if (response.equalsIgnoreCase("Y"))
+                {
                     pt.addTicket();
-                } else if (response.equalsIgnoreCase("N")) {
+                }
+                else if (response.equalsIgnoreCase("N"))
+                {
                     finishedBuying = true;
-                } else {
+                }
+                else
+                {
                     System.out.println("Sorry, that was an invalid option. Please try again.");
                 }
             }

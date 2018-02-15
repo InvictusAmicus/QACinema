@@ -1,8 +1,7 @@
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
-public class UserInterface
+public class UserInterface extends WindowAdapter
 {
     JFrame frame = new JFrame("QA Cinema");
 
@@ -14,6 +13,14 @@ public class UserInterface
 
     public void createScreen()
     {
+        frame.addWindowListener(new WindowAdapter()
+        {
+           public void windowClosing(WindowEvent e)
+           {
+               frame.dispose();
+               System.exit(0);
+           }
+        });
         JPanel panel = new JPanel();
         JLabel greetingsLabel = new JLabel("Welcome to QA Cinemas");
         JLabel ticketType = new JLabel("Ticket Type: ");
@@ -30,6 +37,10 @@ public class UserInterface
             public void actionPerformed(ActionEvent e)
             {
                 Ticket t;
+                if(Integer.parseInt(amountOfTickets.getText()) < 0)
+                {
+                    amountOfTickets.setText("0");
+                }
                 if (ticket.isSelected(standard.getModel()))
                 {
                      t = new Ticket(1, Integer.parseInt(amountOfTickets.getText()));
@@ -48,6 +59,7 @@ public class UserInterface
                 }
                 Order o = Order.getInstance();
                 o.addTickets(t);
+                amountOfTickets.setText("");
             }
         });
 
@@ -59,6 +71,7 @@ public class UserInterface
                 Order o = Order.getInstance();
                 int price = o.calculatePriceOfOrder();
                 JOptionPane.showMessageDialog(frame, "Total price is: £" + price);
+                o.clearCart();
             }
         });
 
